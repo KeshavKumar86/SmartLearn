@@ -51,6 +51,8 @@ public class InstructorController {
     public String deleteInstructor(@PathVariable int instructorId) {
         //find the instructors
         Instructor instructor = instructorRepository.findInstructorById(instructorId);
+        //remove the relationship with courses
+        instructor.getCourses().forEach(course -> course.setInstructor(null));
         instructorRepository.deleteInstructor(instructor);
         return "Instructors deleted successfully with id: " + instructorId;
     }

@@ -1,5 +1,6 @@
 package com.keshav.smartlearn.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -20,6 +21,7 @@ public class Course {
             CascadeType.MERGE, CascadeType.REFRESH
     }, fetch = FetchType.EAGER)
     @JoinColumn(name = "instructor_id")
+    @JsonBackReference
     private Instructor instructor;
 
     //define constructors

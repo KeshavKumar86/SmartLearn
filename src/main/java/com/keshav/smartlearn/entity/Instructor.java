@@ -1,5 +1,6 @@
 package com.keshav.smartlearn.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class Instructor {
             CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.REFRESH
     }, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Course> courses;
 
     //define constructor
