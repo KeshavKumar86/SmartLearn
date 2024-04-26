@@ -57,4 +57,12 @@ public class CourseRepositoryImpl implements CourseRepository {
         typedQuery.setParameter("instructorId",id);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public Course getCourseWithReviews(int id) {
+        TypedQuery<Course> typedQuery = entityManager
+                .createQuery("select c from Course c join fetch c.reviews where c.id=:id", Course.class);
+        typedQuery.setParameter("id",id);
+        return  typedQuery.getSingleResult();
+    }
 }

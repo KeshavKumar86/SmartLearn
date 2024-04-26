@@ -16,4 +16,5 @@ public interface CourseRepository {
 
     Course updateCourse(Course course);
     List<Course> findCourseByInstructorId(int id);
+    Course getCourseWithReviews(int id);
 }

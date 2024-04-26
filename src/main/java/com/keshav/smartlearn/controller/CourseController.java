@@ -62,4 +62,10 @@ public class CourseController {
     public List<Course> findCourseByInstructorId(@PathVariable int instructorId){
         return  courseRepository.findCourseByInstructorId(instructorId);
     }
+
+    //mapping to get Course with Reviews
+    @GetMapping("/courses/reviews/{courseId}")
+    public Course getCourseWithReviews(@PathVariable int courseId){
+        return  courseRepository.getCourseWithReviews(courseId);
+    }
 }
