@@ -15,6 +15,8 @@ public interface CourseRepository {
     void deleteCourse(Course course);
 
     Course updateCourse(Course course);
+
     List<Course> findCourseByInstructorId(int id);
+
     Course getCourseWithReviews(int id);
 }
