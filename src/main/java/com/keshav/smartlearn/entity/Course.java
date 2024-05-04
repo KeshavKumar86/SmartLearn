@@ -3,6 +3,7 @@ package com.keshav.smartlearn.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -104,4 +105,13 @@ public class Course {
                 '}';
     }
     //define db mapping
+
+    //add convenience method for bi-directional relationship
+    public void add(Student student){
+        if(students == null){
+            students = new ArrayList<>();
+        }
+        students.add(student);
+        student.add(this);
+    }
 }

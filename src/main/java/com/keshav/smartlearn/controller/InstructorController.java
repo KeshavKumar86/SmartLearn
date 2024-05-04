@@ -57,13 +57,7 @@ public class InstructorController {
         return "Instructors deleted successfully with id: " + instructorId;
     }
 
-    //mapping to get InstructorDetail by instructor id
-    @GetMapping("instructordetails/{instructorId}")
-    public InstructorDetail getInstructorDetailByInstructorId(@PathVariable int instructorId){
-        //find instructor by id
-        Instructor instructor = instructorRepository.findInstructorById(instructorId);
-        //fetch instructor detail
-        return instructor.getInstructorDetail();
-    }
+
+
 
 }

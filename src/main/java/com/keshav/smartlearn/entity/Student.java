@@ -1,7 +1,10 @@
 package com.keshav.smartlearn.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -28,6 +31,7 @@ public class Student {
                joinColumns = @JoinColumn(name = "student_id"),
                inverseJoinColumns = @JoinColumn(name = "course_id")
     )
+    @JsonIgnore
     private List<Course> courses;
 
     //define constructors
@@ -95,4 +99,13 @@ public class Student {
 
     //define mapping with db table
     //define relationship
+
+    //add convenience method for bi-directional relationship
+    public void add(Course course){
+        if(courses == null){
+            courses = new ArrayList<>();
+        }
+        courses.add(course);
+        course.add(this);
+    }
 }
